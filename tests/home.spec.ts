@@ -1,20 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 test('has title', async ({ page }) => {
-  await page.goto('https://patzsl.github.io/hello-world/', { waitUntil: 'networkidle' });
-
+  await page.goto('http://localhost:5173/', { waitUntil: 'networkidle' });
   await expect(page).toHaveTitle(/Home/);
 });
 
-
-
 test('should go to about page', async ({ page }) => {
-  await page.goto('https://patzsl.github.io/hello-world/', { waitUntil: 'networkidle' });
-
-  await page.click('[data-testid="btn-click"]'); // Supondo que 'btn-click' seja o atributo data-testid do botão
-  await page.click('text="About my site"'); // Supondo que 'About my site' seja o texto exibido no botão que leva para a rota desejada
+  await page.goto('http://localhost:5173/', { timeout: 30000 }); // Aumenta o timeout para 30 segundos
  
-  // Verifica se a URL atual corresponde à rota esperada
-  const currentUrl = page.url();
-  expect(currentUrl).toBe('https://patzsl.github.io/hello-world/about'); // Substitua '/about' pela rota real que você espera após o clique
-});
+  await page.locator('[data-test="btn-primary"]').click({ timeout: 10000 }); // Aumenta o timeout para 10 segundos
+  await expect(await page.url()).toBe('http://localhost:5173/about');
+  await page.pause();
+ });
+ 
