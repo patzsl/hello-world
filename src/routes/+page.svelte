@@ -1,3 +1,7 @@
+<script>
+    import { base } from '$app/paths';
+</script>
+
 <main class="flex flex-col items-center justify-center h-screen w-full">
     <div class="flex gap-2">
      <button class="btn btn-primary">Primary</button>
@@ -5,8 +9,8 @@
      <div class="dropdown">
       <div tabindex="0" role="button" class="btn m-1">Click</div>
       <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-       <li><a href="/about">About my site</a></li>
-       <li><a href="/other">Other page</a></li>
+       <li><a href="{`${base}/about`}">About my site</a></li>
+       <li><a href="{`${base}/other`}">Other page</a></li>
       </ul>
      </div>
     </div>
